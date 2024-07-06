@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "progra3ucema-frontend": {
+    "tp-prog3-frontend": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/progra3ucema-frontend",
+            "outputPath": "dist/tp-prog3-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "progra3ucema-frontend:build:production"
+              "buildTarget": "tp-prog3-frontend:build:production"
             },
             "development": {
-              "buildTarget": "progra3ucema-frontend:build:development"
+              "buildTarget": "tp-prog3-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
