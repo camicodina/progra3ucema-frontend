@@ -7,8 +7,8 @@ export class Estudiante extends Usuario {
     private año: string;
 
 
-    constructor(id: number, usuario: string, nombre: string, email: string, contraseña: string, posts: Post[], carrera: string, año: string) {
-        super(id, usuario, nombre, email, contraseña, posts);
+    constructor(id: number, usuario: string, nombre: string, email: string, password: string, posts: Post[], carrera: string, año: string) {
+        super(id, usuario, nombre, email, password, posts);
         this.carrera = carrera;
         this.año = año;
     }

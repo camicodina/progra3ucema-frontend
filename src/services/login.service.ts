@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Usuario } from '../models/Usuario';
-import mockService from './mockService';
 import { ApiService } from './api.service';
 import { ResponseLoginDTO } from '../dto/ResponseLoginDto';
 
@@ -10,9 +9,6 @@ import { ResponseLoginDTO } from '../dto/ResponseLoginDto';
   providedIn: 'root'
 })
 export class LoginService {
-
-  _url : string = 'http://localhost:8081/api/'
-  
 
   constructor(private apiService: ApiService) { }
 
@@ -28,6 +24,16 @@ export class LoginService {
     )
     response.subscribe(this.changeLoggingUser)
     return response
+  }
+
+  isUserLogin(): Observable<boolean> {
+    this.isLoggedUser = !!localStorage.getItem("token")
+    return of(this.isLoggedUser)
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    this.isLoggedUser = false
   }
 
   changeLoggingUser() {

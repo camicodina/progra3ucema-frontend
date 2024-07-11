@@ -5,19 +5,20 @@ import { Usuario } from '../models/Usuario';
 import { ApiService } from './api.service';
 import { ResponseLoginDTO } from '../dto/ResponseLoginDto';
 import { Post } from '../models/Post';
+import { Etiqueta } from '../models/Etiqueta';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostsService {
+export class EtiquetasService {
 
   constructor(private apiService: ApiService) { }
 
-  obtenerPostsPorUsuario(username: string) {
-    return this.apiService.getPostByUsername(username);
+  obtenerEtiquetas() {
+    return this.apiService.getEtiquetas();
   }
 
-  crearPost(post: Post) {
-    this.apiService.postPost(post)
+  crearEtiqueta(etiqueta: Etiqueta) {
+    this.apiService.postEtiqueta(etiqueta)
   }
 }
