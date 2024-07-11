@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/Usuario';
 import mockService from './mockService';
+import { ApiService } from './api.service';
+import { ResponseLoginDTO } from '../dto/ResponseLoginDto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +14,24 @@ export class LoginService {
   _url : string = 'http://localhost:8081/api/'
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private apiService: ApiService) { }
 
-  login(username: any, password: any): Observable<Usuario> {
-    const headers = { 'Authorization': 'Basic ' + btoa(username + ":" + password)}
-    const obs: Observable<Usuario> = this.http.get<Usuario>(this._url + "usuario", {headers});
-    obs.subscribe((usuario) => {
-      localStorage.setItem('user', btoa(username + ":" + password))
-      localStorage.setItem('username', usuario.getUsuario())
-    })
-    return obs
+  isLoggedUser = false
+
+  login(username: any, password: any): Observable<ResponseLoginDTO> {
+    let response  = this.apiService.login(username, password)
+    response.subscribe(
+      (jwt) => {
+        localStorage.setItem('token', jwt.token!)
+        this.isLoggedUser = true
+      }
+    )
+    response.subscribe(this.changeLoggingUser)
+    return response
+  }
+
+  changeLoggingUser() {
+    this.isLoggedUser = true
   }
 
 }

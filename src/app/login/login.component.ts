@@ -10,23 +10,28 @@ import mockService from '../../services/mockService';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  usuario:any
+  usuario: any
+
+  error: string = "";
 
   formLogin: FormGroup = new FormGroup({
     usuario: new FormControl('', [Validators.required]),
     contraseña: new FormControl('', [Validators.required])
   })
 
-  constructor(private loginService:LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) { }
 
   login(): void {
     const val = this.formLogin.value
-    const usuario = mockService.login(val.usuario, val.contraseña)
-    if(!usuario) return
-    this.router.navigate(['/home'])
     this.loginService.login(val.usuario, val.contraseña).subscribe(
-      (usuario) => {
+      (jwt) => {
+        if (jwt.token === null) {
+          this.error = "Usuario o pass invalidos"
+          return;
+        }
+        this.formLogin.reset()
         this.router.navigate(['/home'])
+
       }
     )
   }
