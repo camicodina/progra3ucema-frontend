@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from '../services/httpClient.interceptor';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthInterceptor } from '../services/httpClient.interceptor';
     HomeComponent,
     MenuComponent,
     PerfilComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

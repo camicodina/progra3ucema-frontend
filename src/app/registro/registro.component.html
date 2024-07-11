@@ -1,0 +1,90 @@
+<div class="login-page flex-centered">
+  <div class="login-box flex-centered">
+    <div class="login-box-panel">
+      <h1 class="login-title">Registro</h1>
+    </div>
+    <div class="login-box-panel">
+      <form [formGroup]="formRegistro" (ngSubmit)="submitFormRegistro()">
+        <div class="login-form-group">
+          <div>
+            <label for="role">Rol</label>
+            <select id="role" formControlName="role">
+              <option value="alumno">Alumno</option>
+              <option value="profesor">Profesor</option>
+            </select>
+          </div>
+          <br />
+          <label for="usernameField">Usuario</label>
+          <input
+            type="text"
+            class="form-control"
+            id="usernameField"
+            placeholder="Pepito1"
+            formControlName="username"
+          />
+        </div>
+        <div class="login-form-group">
+          <label for="passwordField">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="passwordField"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <div class="login-form-group">
+          <label for="emailField">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="emailField"
+            placeholder="name@example.com"
+            formControlName="email"
+          />
+        </div>
+        <div class="login-form-group">
+          <label for="nameField">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nameField"
+            placeholder="josesito"
+            formControlName="name"
+          />
+        </div>
+
+        <!-- Campos adicionales que solo se muestran si el rol es "alumno" -->
+        <div *ngIf="isAlumno()">
+          <div class="login-form-group">
+            <label for="carreraField">Carrera</label>
+            <input
+              type="text"
+              class="form-control"
+              id="carreraField"
+              placeholder="Informatica"
+              formControlName="carrera"
+            />
+          </div>
+          <div class="login-form-group">
+            <label for="añoField">Año</label>
+            <input
+              type="text"
+              class="form-control"
+              id="añoField"
+              placeholder="1ro"
+              formControlName="año"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="login-btn-container">
+          <button  class="login-button" type="submitFormRegistro" [disabled]="formRegistro.invalid">
+            Registrame
+          </button>
+        </div>
+        <div>{{ error }}</div>
+      </form>
+    </div>
+  </div>
+</div>

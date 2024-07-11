@@ -25,12 +25,24 @@ export class ApiService {
   }
 
   //USUARIO
-  postAlumno(alumno: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this._url + 'usuario/alumno', alumno);
+  postAlumno(username: string, password: string, email: string, name: string, año: string, carrera: string): Observable<Usuario> {
+    return this.http.post<Usuario>(this._url + 'usuario/alumno', {
+      username,
+      password,
+      email,
+      name,
+      año,
+      carrera
+    });
   }
 
-  postProfesor(profesor: Profesor): Observable<Profesor> {
-    return this.http.post<Profesor>(this._url + 'usuario/profesor', profesor);
+  postProfesor(username: string, password: string, email: string, name: string): Observable<Profesor> {
+    return this.http.post<Profesor>(this._url + 'usuario/profesor', {
+      username,
+      password,
+      email,
+      name
+    });
   }
 
   putUsuario(usuario: Usuario): Observable<Usuario> {

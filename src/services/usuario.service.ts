@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { Usuario } from '../models/Usuario';
 import { ApiService } from './api.service';
 import { ResponseLoginDTO } from '../dto/ResponseLoginDto';
+import { Alumno } from '../models/Alumno';
+import { Profesor } from '../models/Profesor';
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +20,14 @@ export class UsuarioService {
 
     obtenerRoleLocal() {
         return localStorage.getItem('role')
+    }
+
+    crearAlumno(username: string, password: string, email: string, name: string, año: string, carrera: string) {
+        return this.apiService.postAlumno(username, password, email, name, año, carrera)
+    }
+
+    crearProfesor(username: string, password: string, email: string, name: string) {
+        return this.apiService.postProfesor(username, password, email, name)
     }
 
     obtenerInfoDeUsuario(): Observable<Usuario> {
