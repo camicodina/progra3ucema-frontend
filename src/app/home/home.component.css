@@ -52,6 +52,13 @@ list-item:hover {
     border: 1px solid red;
 }
 
+.add-etiqueta-form {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--app-white);
+    padding: 5px;
+}
+
 
 /* Container for the entire post */
 .post-container {

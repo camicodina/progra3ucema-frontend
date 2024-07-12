@@ -14,6 +14,8 @@
               formControlName="texto"
             ></textarea>
           </div>
+          <br />
+          <label for="textoField">Agrega una etiqueta a tu post</label>
           <select
             class="form-select form-select-lg mb-3"
             aria-label="Large select example"
@@ -28,6 +30,8 @@
           </div>
         </form>
       </div>
+      <br />
+      <br />
       <div class="add-etiqueta-form" *ngIf="!isAlumno()">
         <form [formGroup]="formEtiqueta" (ngSubmit)="agregarEtiqueta()">
           <div class="login-form-group">
@@ -46,7 +50,7 @@
         </form>
       </div>
     </div>
-
+    <br />
     <div>
       <div *ngFor="let p of posts" class="post-container">
         <div class="post-content">
