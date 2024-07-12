@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Usuario } from '../../models/Usuario';
 import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,7 @@ export class MenuComponent {
   usuario?: Usuario
   username: string = ""
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.usuarioService.obtenerInfoDeUsuario().subscribe(
@@ -23,5 +24,10 @@ export class MenuComponent {
         }
       }
     )
+  }
+
+  logout(){
+    this.loginService.logout()
+    this.router.navigate(['/login'])
   }
 }
