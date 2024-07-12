@@ -1,33 +1,51 @@
 <div class="home-container">
   <app-menu></app-menu>
   <div class="muro-container">
-    <div class="add-post-form">
-      <form [formGroup]="formPost" (ngSubmit)="agregarPost()">
-        <div class="login-form-group">
-          <label for="emailField">Texto del post</label>
-          <textarea
-            type="email"
-            class="form-control"
-            id="emailField"
-            placeholder="Escribi tu mensaje"
-            formControlName="texto"
-          ></textarea>
-        </div>
-        <select
-          class="form-select form-select-lg mb-3"
-          aria-label="Large select example"
-          formControlName="etiqueta"
-        >
-          <option *ngFor="let e of etiquetas" [value]="e.id">
-            {{ e.nombre }}
-          </option>
-        </select>
-        <div class="login-btn-container">
-          <button type="submit" class="login-button">Agregar post</button>
-        </div>
-      </form>
+    <div class="forms-container">
+      <div class="add-post-form">
+        <form [formGroup]="formPost" (ngSubmit)="agregarPost()">
+          <div class="login-form-group">
+            <label for="textoField">Texto del post</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="textoField"
+              placeholder="Escribi tu mensaje"
+              formControlName="texto"
+            ></textarea>
+          </div>
+          <select
+            class="form-select form-select-lg mb-3"
+            aria-label="Large select example"
+            formControlName="etiqueta"
+          >
+            <option *ngFor="let e of etiquetas" [value]="e.id">
+              {{ e.nombre }}
+            </option>
+          </select>
+          <div class="login-btn-container">
+            <button type="submit" class="login-button">Agregar post</button>
+          </div>
+        </form>
+      </div>
+      <div class="add-etiqueta-form" *ngIf="!isAlumno()">
+        <form [formGroup]="formEtiqueta" (ngSubmit)="agregarEtiqueta()">
+          <div class="login-form-group">
+            <label for="nombreField">nombre de la etiqueta</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombreField"
+              placeholder="Escribi el nombre"
+              formControlName="nombre"
+              />
+          </div>
+          <div class="login-btn-container">
+            <button type="submit" class="login-button">Agregar etiqueta</button>
+          </div>
+        </form>
+      </div>
     </div>
-    <div></div>
 
     <div>
       <div *ngFor="let p of posts" class="post-container">

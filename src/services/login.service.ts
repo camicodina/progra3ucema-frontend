@@ -32,6 +32,7 @@ export class LoginService {
   }
 
   logout() {
+    this.apiService.logout()
     localStorage.removeItem('token')
     this.isLoggedUser = false
   }

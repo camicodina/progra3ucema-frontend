@@ -19,6 +19,6 @@ export class EtiquetasService {
   }
 
   crearEtiqueta(nombre: string, username: string) {
-    this.apiService.postEtiqueta(nombre, username)
+    return this.apiService.postEtiqueta(nombre, username)
   }
 }

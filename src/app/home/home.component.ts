@@ -27,6 +27,10 @@ export class HomeComponent {
     etiqueta: new FormControl('', [Validators.required])
   })
 
+  formEtiqueta: FormGroup = new FormGroup({
+    nombre: new FormControl('', [Validators.required])
+  })
+
   ngOnInit(): void {
     this.etiquetasSevice.obtenerEtiquetas().subscribe((ets: Etiqueta[]) => {
       this.etiquetas = ets;
@@ -53,6 +57,15 @@ export class HomeComponent {
       const formVals = this.formPost.value
       this.postsService.crearPost(formVals.texto, this.usuario.username, formVals.etiqueta).subscribe(() => {
         this.refreshPosts();
+      });
+    }
+  }
+
+  agregarEtiqueta() {
+    if (this.formEtiqueta.valid && this.usuario) {
+      const formVals = this.formEtiqueta.value
+      this.etiquetasSevice.crearEtiqueta(formVals.nombre, this.usuario.username).subscribe(() => {
+        this.refreshEtiquetas();
       });
     }
   }
@@ -84,6 +97,14 @@ export class HomeComponent {
     if (this.usuario) {
       this.postsService.obtenerPostsPorUsuario(this.usuario.username).subscribe((posts: Post[]) => {
         this.posts = posts;
+      });
+    }
+  }
+
+  private refreshEtiquetas() {
+    if (this.usuario) {
+      this.etiquetasSevice.obtenerEtiquetas().subscribe((ets: Etiqueta[]) => {
+        this.etiquetas = ets;
       });
     }
   }

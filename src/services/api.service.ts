@@ -24,6 +24,10 @@ export class ApiService {
     return this.http.post<ResponseLoginDTO>(this._url + 'auth/login', { username: username, password: password })
   }
 
+  logout(): Observable<ResponseLoginDTO> {
+    return this.http.post<ResponseLoginDTO>(this._url + 'auth/logout', {})
+  }
+
   //USUARIO
   postAlumno(username: string, password: string, email: string, name: string, año: string, carrera: string): Observable<Usuario> {
     return this.http.post<Usuario>(this._url + 'usuario/alumno', {
@@ -106,7 +110,7 @@ export class ApiService {
 
   //Etiqueta
   postEtiqueta(nombre: string, username: string) {
-    return this.http.post<Etiqueta>(this._url + `etiquetas?nombre=${nombre}&usuario=${username}`, {});
+    return this.http.post<Etiqueta>(this._url + `etiquetas?nombre=${nombre}&username=${username}`, {});
   }
 
   getEtiquetaById(id: number) {
