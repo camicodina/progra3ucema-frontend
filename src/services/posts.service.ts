@@ -14,10 +14,22 @@ export class PostsService {
   constructor(private apiService: ApiService) { }
 
   obtenerPostsPorUsuario(username: string) {
-    return this.apiService.getPostByUsername(username);
+    return this.apiService.getPostsRecientes();
   }
 
-  crearPost(post: Post) {
-    this.apiService.postPost(post)
+  crearPost(texto: string, username: string, idEtiqueta: string) {
+    return this.apiService.postPost(texto, username, idEtiqueta)
+  }
+
+  likePost(id: number) {
+    return this.apiService.postLikePost(id)
+  }
+
+  UnlikePost(id: number) {
+    return this.apiService.postUnlikePost(id)
+  }
+
+  borrarPost(id: number, usersame: string) {
+    return this.apiService.deletePost(id, usersame)
   }
 }

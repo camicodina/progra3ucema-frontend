@@ -76,12 +76,12 @@ export class ApiService {
   }
 
   //POST
-  postPost(post: Post) {
-    return this.http.post<Post>(this._url + 'posts', post);
+  postPost(texto: string, username: string, idEtiqueta: string) {
+    return this.http.post<Post>(this._url + `posts?texto=${texto}&username=${username}&etiquetaId=${idEtiqueta}`, {});
   }
 
-  deletePost(id: number) {
-    return this.http.delete<void>(this._url + 'posts/' + id);
+  deletePost(id: number, username: string) {
+    return this.http.delete<void>(this._url + `posts/${id}?username=${username}`);
   }
 
   getPostByUsername(username: string) {
@@ -105,8 +105,8 @@ export class ApiService {
   }
 
   //Etiqueta
-  postEtiqueta(etiqueta: Etiqueta) {
-    return this.http.post<Etiqueta>(this._url + 'etiquetas', etiqueta);
+  postEtiqueta(nombre: string, username: string) {
+    return this.http.post<Etiqueta>(this._url + `etiquetas?nombre=${nombre}&usuario=${username}`, {});
   }
 
   getEtiquetaById(id: number) {

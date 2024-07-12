@@ -1,32 +1,56 @@
 <div class="home-container">
   <app-menu></app-menu>
-  <div>
-    <div class="add-post-form"></div>
-    <form [formGroup]="formPost" (ngSubmit)="agregarPost()">
-      <div class="login-form-group">
-        <label for="emailField">Texto del post</label>
-        <textarea
-          type="email"
-          class="form-control"
-          id="emailField"
-          placeholder="Escribi tu mensaje"
-          formControlName="texto"
-        ></textarea>
-      </div>
-      <select class="form-select form-select-lg mb-3" aria-label="Large select example">
-        <option *ngFor="let e of etiquetas" [value]="e.id">{{e.nombre}}</option>
-      </select>
-    </form>
-    <div>
-      <ng-container *ngFor="let p of posts">
-        <div class="card col-6 m-3" style="width: 18rem">
-          <div class="card-body">
-            <div *ngFor="let p of posts">
-              <div>{{p.texto}}</div>
-            </div>
-          </div>
+  <div class="muro-container">
+    <div class="add-post-form">
+      <form [formGroup]="formPost" (ngSubmit)="agregarPost()">
+        <div class="login-form-group">
+          <label for="emailField">Texto del post</label>
+          <textarea
+            type="email"
+            class="form-control"
+            id="emailField"
+            placeholder="Escribi tu mensaje"
+            formControlName="texto"
+          ></textarea>
         </div>
-      </ng-container>
+        <select
+          class="form-select form-select-lg mb-3"
+          aria-label="Large select example"
+          formControlName="etiqueta"
+        >
+          <option *ngFor="let e of etiquetas" [value]="e.id">
+            {{ e.nombre }}
+          </option>
+        </select>
+        <div class="login-btn-container">
+          <button type="submit" class="login-button">Agregar post</button>
+        </div>
+      </form>
+    </div>
+    <div></div>
+
+    <div>
+      <div *ngFor="let p of posts" class="post-container">
+        <div class="post-content">
+          <p>{{ p.texto }}</p>
+        </div>
+        <div class="post-actions">
+          <div>Likes: {{ p.likes }}</div>
+          <button class="like-button" (click)="likePost(p)">
+            {{ "👍 Like" }}
+          </button>
+          <button class="like-button" (click)="unlikePost(p)">
+            {{ "👎 Unlike" }}
+          </button>
+          <button
+            *ngIf="!isAlumno()"
+            class="delete-button"
+            (click)="deletePost(p)"
+          >
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

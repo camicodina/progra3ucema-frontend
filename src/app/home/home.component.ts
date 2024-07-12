@@ -49,6 +49,42 @@ export class HomeComponent {
   }
 
   agregarPost() {
+    if (this.formPost.valid && this.usuario) {
+      const formVals = this.formPost.value
+      this.postsService.crearPost(formVals.texto, this.usuario.username, formVals.etiqueta).subscribe(() => {
+        this.refreshPosts();
+      });
+    }
+  }
 
+  likePost(p: Post) {
+    this.postsService.likePost(p.id).subscribe(() => {
+      this.refreshPosts();
+    });
+  }
+
+  unlikePost(p: Post) {
+    this.postsService.UnlikePost(p.id).subscribe(() => {
+      this.refreshPosts();
+    });
+  }
+
+  deletePost(p: Post) {
+    if(!this.usuario) return
+    this.postsService.borrarPost(p.id, this.usuario.username).subscribe(() => {
+      this.refreshPosts();
+    });
+  }
+
+  isAlumno() {
+    return this.usuario?.role === "ALUMNO"
+  }
+
+  private refreshPosts() {
+    if (this.usuario) {
+      this.postsService.obtenerPostsPorUsuario(this.usuario.username).subscribe((posts: Post[]) => {
+        this.posts = posts;
+      });
+    }
   }
 }

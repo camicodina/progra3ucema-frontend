@@ -5,6 +5,9 @@
     margin-left: 20vw;
 }
 
+.muro-container{
+    padding: 20px;
+}
 
 .combobox {
     margin: auto;
@@ -48,3 +51,65 @@ list-item:hover {
 .error {
     border: 1px solid red;
 }
+
+
+/* Container for the entire post */
+.post-container {
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: solid 1px ;
+    border-color: var(--app-white);
+    border-radius: 10px;
+  }
+  
+  /* Content of the post */
+  .post-content {
+    margin-bottom: 10px;
+  }
+  
+  /* Actions container */
+  .post-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Like button styling */
+  .like-button {
+    background-color: #28a745; /* Green background */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Liked button styling */
+  .liked {
+    background-color: #ffc107; /* Yellow background for liked state */
+    color: black;
+  }
+  
+  /* Delete button styling */
+  .delete-button {
+    background-color: #dc3545; /* Red background */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  /* Button hover effects */
+  .like-button:hover {
+    background-color: #218838;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
