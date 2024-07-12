@@ -1,1 +1,23 @@
-<p>perfil works!</p>
+<div class="profile-container">
+    <h3>Perfil de Usuario</h3>
+    <div class="profile-detail">
+      <label>Nombre de Usuario:</label>
+      <span>{{ getUsername() }}</span>
+    </div>
+    <div class="profile-detail">
+      <label>Nombre:</label>
+      <span>{{ getName() }}</span>
+    </div>
+    <div class="profile-detail">
+      <label>Email:</label>
+      <span>{{ getEmail() }}</span>
+    </div>
+    <div *ngIf="shouldShowCarrera()" class="profile-detail">
+      <label>Carrera:</label>
+      <span>{{ getCarrera() }}</span>
+    </div>
+    <div *ngIf="shouldShowAnio()" class="profile-detail">
+      <label>Año:</label>
+      <span>{{ getAnio() }}</span>
+    </div>
+  </div>

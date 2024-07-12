@@ -4,14 +4,16 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
+declare var bootstrap: any;
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  usuario?: Usuario
-  username: string = ""
+  usuario?: Usuario;
+  username: string = "";
+  mostrarPerfil: boolean = false;
 
   constructor(private usuarioService: UsuarioService, private loginService: LoginService, private router: Router) { }
 
@@ -24,6 +26,13 @@ export class MenuComponent {
         }
       }
     )
+  }
+  verPerfil() {
+   this.mostrarPerfil= true;
+  }
+
+  esconderPerfil() {
+    this.mostrarPerfil = false;
   }
 
   logout(){

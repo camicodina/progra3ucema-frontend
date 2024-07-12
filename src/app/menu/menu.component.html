@@ -6,5 +6,11 @@
     <div class="perfil-section">
         {{usuario?.username}}
     </div>
+    <button (click)="verPerfil()">Ver perfil</button>
     <button (click)="logout()">Cerrar sesion</button>
+</div>
+
+<div class="modal-container" *ngIf="mostrarPerfil">
+    <app-perfil [usuario]="usuario"></app-perfil>
+    <button (click)="esconderPerfil()">Cerrar</button>
 </div>
