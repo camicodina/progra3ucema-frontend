@@ -76,7 +76,7 @@ Finalmente, previo a inicializar el Development Server se debe ejecutar el sigui
 
 ```bash
     npm install
-    ```
+```
 
 ### Development server
 
