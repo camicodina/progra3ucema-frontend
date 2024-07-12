@@ -5,15 +5,15 @@
       <span>{{ getUsername() }}</span>
     </div>
     <div class="profile-detail">
-      <label>Nombre:</label>
+      <label>Nombre: </label>
       <span>{{ getName() }}</span>
     </div>
     <div class="profile-detail">
-      <label>Email:</label>
+      <label>Email: </label>
       <span>{{ getEmail() }}</span>
     </div>
     <div *ngIf="shouldShowCarrera()" class="profile-detail">
-      <label>Carrera:</label>
+      <label>Carrera: </label>
       <span>{{ getCarrera() }}</span>
     </div>
     <div *ngIf="shouldShowAnio()" class="profile-detail">

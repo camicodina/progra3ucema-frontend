@@ -3,14 +3,16 @@
         
     </div>
     <div class="menu-separator"></div>
-    <div class="perfil-section">
+    <div class="perfil-section" style="font-weight: bold;">
         {{usuario?.username}}
     </div>
-    <button (click)="verPerfil()">Ver perfil</button>
-    <button (click)="logout()">Cerrar sesion</button>
+    <br>
+    <button (click)="verPerfil()" class="btn btn-primary">Ver perfil</button>
+    <br>
+    <button (click)="logout()" class="btn btn-primary">Cerrar sesion</button>
 </div>
 
-<div class="modal-container" *ngIf="mostrarPerfil">
+<div class="modal-container d-flex justify-content-center" *ngIf="mostrarPerfil" style="width: 50%; height: 50%;">
     <app-perfil [usuario]="usuario"></app-perfil>
-    <button (click)="esconderPerfil()">Cerrar</button>
+    <button (click)="esconderPerfil()" class="btn btn-primary" style="margin-top: 2%;">Cerrar</button>
 </div>

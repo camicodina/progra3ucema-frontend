@@ -26,7 +26,7 @@
             </option>
           </select>
           <div class="login-btn-container">
-            <button type="submit" class="login-button">Agregar post</button>
+            <button type="submit" class="login-button btn btn-primary">Agregar post</button>
           </div>
         </form>
       </div>
@@ -45,7 +45,7 @@
               />
           </div>
           <div class="login-btn-container">
-            <button type="submit" class="login-button">Agregar etiqueta</button>
+            <button type="submit" class="login-button btn btn-primary" style="margin-top: 2%; margin-bottom: 2%;">Agregar etiqueta</button>
           </div>
         </form>
       </div>
@@ -54,6 +54,11 @@
     <div>
       <div *ngFor="let p of posts" class="post-container">
         <div class="post-content">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <p style="font-weight: bold;">{{ p.usuario.username }}</p>
+            <span *ngIf="p.etiqueta" class="badge text-bg-secondary" style="margin-top: -5%;">{{ p.etiqueta.nombre }}</span>
+          </div>
+          
           <p>{{ p.texto }}</p>
         </div>
         <div class="post-actions">
