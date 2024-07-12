@@ -1,14 +1,14 @@
 <div class="login-page flex-centered">
   <div class="login-box flex-centered">
     <div class="login-box-panel">
-      <h1 class="login-title">Registro</h1>
+      <h1 class="login-title" style="margin-left: -70%;">Registro</h1>
     </div>
     <div class="login-box-panel">
       <form [formGroup]="formRegistro" (ngSubmit)="submitFormRegistro()">
         <div class="login-form-group">
           <div>
             <label for="role">Rol</label>
-            <select id="role" formControlName="role">
+            <select class="form-select" id="role" formControlName="role">
               <option value="alumno">Alumno</option>
               <option value="profesor">Profesor</option>
             </select>

@@ -14,7 +14,8 @@
     border-radius: 20px;
     padding: 20px;
     color: var(--app-white);
-    height: 50vh;    
+    height: 80%; 
+    width: 50%      
 }
 
 .login-box-panel {
